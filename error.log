@@ -1,0 +1,9 @@
+Harbour 3.2.0dev (r2011030937)
+Copyright (c) 1999-2020, https://harbour.github.io/
+triangulo.prg(1) Error E0020  Incomplete statement or unbalanced delimiters
+1 error
+
+No code generated.
+hbmk2: Error: Running Harbour compiler (built-in). 1
+(C:\StartTOTVSIP\HMG.3.5\harbour\bin\harbour.exe) -n2 triangulo.prg -DHBMK_HAS_HMG32=1 -q -oC:\Users\ADMINI~1\AppData\Local\Temp\hbmk_khvqfx.dir\ -iC:\StartTOTVSIP\HMG.3.5\harbour\include -i. -iC:\StartTOTVSIP\HMG.3.5\include
+

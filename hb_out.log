@@ -1,0 +1,53 @@
+Application Internal Error - 58_somanumnat10.prg
+Terminated at: 2022-10-18 23:42:35
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from SOMANUM(31) in pcode.hrb
+Called from MAIN(11) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
+Application Internal Error - 80_sexalt.prg
+Terminated at: 2022-10-24 22:30:54
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from SEXOALTURA(40) in pcode.hrb
+Called from MAIN(13) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
+Application Internal Error - 80_sexalt.prg
+Terminated at: 2022-10-24 22:32:42
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from SEXOALTURA(40) in pcode.hrb
+Called from MAIN(13) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
+Application Internal Error - 07-27-inverttext.prg
+Terminated at: 2022-11-08 18:48:41
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from MAI(22) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
+Application Internal Error - 07-35-matc.prg
+Terminated at: 2022-11-12 17:09:43
+Erro irrecuperável 9009: hb_xrealloc nao pode realocar memória
+Called from AADD(0)
+Called from MAIN(31) in pcode.hrb
+Called from HB_HRBDO(0)
+Called from __HBSHELL(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from HBMK_LOCAL_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+Called from __HBMK_PUBLIC_ENTRY(0) in hbrun\..\..\utils\hbmk2\hbmk2.prg
+------------------------------------------------------------------------
