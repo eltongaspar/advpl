@@ -1,0 +1,33 @@
+// Lista 07 - Exercicio 37 
+
+Set Procedure to Lib_GeraNumAleatMinMax.prg
+Set Procedure to Lib_GeraMatM.prg
+Set Procedure to Lib_GeraMatN.prg
+Set Procedure to Lib_GeraMatR.prg
+
+Function Main()
+
+Local aA := {}
+Local aB := {}
+Local aC := {}
+Local aM := {}
+Local aN := {}
+Local aR := {}
+Local iQtdeGerInform := 10
+Local iNumMinInform := 1
+Local iNumMaxInfor := 1000
+
+QOut("Matriz A")
+aA := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+QOut("Matriz B")
+aB := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+QOut("Matriz C")
+aC := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+
+aM := GeraMatM(aA,aB,aC,iQtdeGerInform)
+
+aN := GeraMatN()
+
+aR := GeraMatR(aM,aN)
+
+Return Nil 

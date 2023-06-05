@@ -1,0 +1,1 @@
+#define HMGRPATH C:\StartTOTVSIP\HMG.3.5\\RESOURCES 
