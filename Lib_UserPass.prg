@@ -37,9 +37,9 @@ While nQtdeCaractPass <= 6 .or. iValidSegPass = 0
 
    
     For nCountPass :=1 To nQtdeCaractPass
-    cTemp := SubStr(cPassDigit, nCountPass, 1)
+        cTemp := SubStr(cPassDigit, nCountPass, 1)
             
-    lValidLetMaisc := IsUpper(cTemp)
+        lValidLetMaisc := IsUpper(cTemp)
         If lValidLetMaisc = .T.
             iQtdeLetMaisc := iQtdeLetMaisc+1
         EndIf
