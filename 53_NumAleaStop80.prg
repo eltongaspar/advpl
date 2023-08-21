@@ -50,21 +50,30 @@ Local iCont := 1
 Local iMin := 10
 Local iMax := 100
 Local iNum := 0
-Local iNumStop := -1 
+Local iNumStop := 80
+Local iQtdeGer := 91
+Local iCont2 := 1
 
+While iCont2 <= iQtdeGer
+    While iNum <> iNumStop .and. iCont2 <= iQtdeGer
+        iNum := RANDOM(iMin,iMax)
 
-While iNum <> iNumStop
-    iNum := RANDOM(iMin,iMax)
-       
-    If iNum >= iMin .And. iNum <= iMax 
+        If iNum >= iMin .And. iNum <= iMax 
         AAdd (aNumGer,iCont)
         aNumGer[iCont] := iNum
-         iCont++
-        
-    EndIf
+         
+        iCont++
+        iCont2++
+        EndIf
 
-    QOUT(hb_valtoexp(aNumGer))
+        QOUT(hb_valtoexp(aNumGer))
         
+        If iNum = 80
+            iCont2 := iQtdeGer +1
+        End
+
+    Enddo
+    
 Enddo
 
 Return (aNumGer)
@@ -106,7 +115,7 @@ Local iNumStop := 80
 Local iQtdeRepet := 91
 
 For iCont := 1 To 90
-    iNum := HB_Randomint (iMin,iMax)
+    iNum := HB_Randomint(iMin,iMax)
 
     If iNum <> iNumStop
         AAdd (aNumGer,iCont)
