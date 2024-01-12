@@ -6,6 +6,8 @@ Set Procedure to Lib_GeraNumAleatMinMax.prg
 Set Procedure to Lib_MsgLoad.prg
 Set Procedure to Lib_GeraNumSeqMinMaxMat.prg
 Set Procedure to Lib_GeraBarAuto.prg
+Set Procedure to Lib_FuncaoTelaPergunt.prg
+Set Procedure to Lib_FuncaoTela.prg
 
 Function Main()
 
@@ -22,7 +24,7 @@ Local aBaralho := {;
 {110,3,"10","Copas"},{110,4,"10","Ouro"},{110,5,"10","Paus"},{110,6,"10","Espadas"},; //37-40
 {111,3,"Q","Copas"},{111,4,"Q","Ouro"},{111,5,"Q","Paus"},{111,6,"Q","Espadas"},; //41-44
 {112,3,"J","Copas"},{112,4,"J","Ouro"},{112,5,"J","Paus"},{112,6,"J","Espadas"},; //45-48
-{113,3,"K","Copas"},{113,4,"K","Ouro"},{113,5,"K","Paus"},{113,6,"K","Espadas"}} //49-52
+{113,3,"K","Copas"},{113,4,"K","Ouro"},{113,5,"K","Paus"},{113,6,"K","Espadas"}}//49-52
 Local aCartas := {}
 Local aNaipes := {}
 Local aEmbar := {}
@@ -49,6 +51,39 @@ local iPesqNaipeUser := 0
 local iQtdeMsgInform := 5
 local cMsgInform := ''
 local aBarGerAuto := {}
+local lWait := .F.
+local lInkey := .F.
+local iWaittValid := 0
+local iInkeytValid := 0
+local iTempInkey := 0
+local iInfinito := 0
+local lInfinit := .F.
+
+
+While iInfinito <> 1 .And. iInfinito <> 2
+    Accept ('Deseja ativar Modo Loop: 1-Sim/2-Nao:  ') to iInfinito
+
+    iInfinito := Val(iInfinito)
+
+    If iInfinito = 1
+        lInfinit := .T.
+    END
+
+    If iInfinito = 2
+        lInfinit := .F.
+    End
+
+End do 
+
+If lInfinit = .F.
+    FuncaoTelaPergunt()
+End
+
+If lInfinit = .F.
+    FuncaoTela()
+End
+
+While lInfinit = .T.
 
 // Gerando Baralho Auto - 
 iQtdeGerInform := 13
@@ -56,17 +91,16 @@ iNumMinInform := 101
 iNumMaxInfor := 113
 cMsgInform := 'Criando Baralho Auto'
 MsgLoad(cMsgInform,iQtdeMsgInform)
-aBarGerAuto := GeraBarAuto(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
+aBarGerAuto := GeraBarAuto(iQtdeGerInform,iNumMinInform,iNumMaxInfor) 
+
+
 
 //Exibe Baralho 
 cMsgInform := 'Carregando Baralhos'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 QOUT(hb_valtoexp(aBaralho))
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
 
+FuncaoTela()
 
 // Embaralhando Cartas
 iQtdeGerInform := 52
@@ -76,9 +110,8 @@ iNumMaxInfor := 113
 cMsgInform := 'Embaralhando Cartas Resultado'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 aCartas := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
 
+FuncaoTela()
 
 //Embaralhando Naipes
 iQtdeGerInform := 52
@@ -89,13 +122,10 @@ cMsgInform := 'Embaralhando Naipes'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 
 aNaipes := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
 
-
+FuncaoTela()
 
 //Cartas Embaralhadas (Cartas+Naipes)
-
 iQtde := iQtdeGerInform
 iCont := 1
 iCont2 := 2
@@ -123,9 +153,8 @@ cMsgInform := 'Carregando Baralhos Embaralhados'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 
 QOUT(hb_valtoexp(aEmbar))
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
 
+FuncaoTela()
 
 // Embaralhando 21 Cartas 
 iQtde := 21
@@ -141,9 +170,8 @@ While iCont <= iQtde
     QOUT(hb_valtoexp(aEmbar[iCont]))
     iCont++
 EndDo
-Wait('Aperte uma Tecla para Continuar') 
-INKEY( 5 )
 
+FuncaoTela()
 
 // Embaralhando 21 Cartas (Matriz 7x3)
 iQtde := 3
@@ -169,8 +197,8 @@ cMsgInform := 'Cartas Embaralhadas (21 Cartas Matriz 7x3)'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 
 QOUT(hb_valtoexp(aMatTemp))
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
+
+FuncaoTela()
 
 // Informar ou Gerar Carta para Pesquisa
 //Accept("Digite uma Carta para Pesquisa:  ") to cPesqCartUser
@@ -194,27 +222,26 @@ iNumMaxInfor := 6
 
 cMsgInform := 'Pesquisa Auto - Naipe Aleatoria'
 MsgLoad(cMsgInform,iQtdeMsgInform)
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
 
+FuncaoTela()
 
 aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
 iPesqNaipeUser := aMatTemp2[1]
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
 
+FuncaoTela()
 
 iPesqCarta := iPesqCarta := Ascan(aEmbar, {|x| x[1] == cPesqCartUser})
 //iPesqNaipe := Ascan( aBaralho , {|x| x[2] == iPesqNaipeUser},iPesqCarta)
 iPesq := iPesqCarta
 QOut("Posicao Matriz")
 QOut(iPesq)
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
+
+FuncaoTela()
+
 QOut("Cartas")
 QOUT(hb_valtoexp(aEmbar[iPesq]))
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
+
+FuncaoTela()
 
 iCont := 1
 iCont2 := 2
@@ -236,9 +263,8 @@ While iCont <= iQtde
     aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
     cPesqCartUser := aMatTemp2[1]
     QOut(cPesqCartUser)
-    Wait('Aperte uma Tecla para Continuar') 
-    Inkey(5)
-
+    
+    FuncaoTela()
 
     //Accept("Informe o Naipe a Ser Trocada 3-Copas / 4-Ouro / 5-Paus / 6-Espada:  ") to iNaipe
     //iNaipe := 3   
@@ -252,15 +278,11 @@ While iCont <= iQtde
     aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
     iNaipe := aMatTemp2[1]
     QOut(iNaipe)
-    Wait('Aperte uma Tecla para Continuar') 
-    Inkey(5)
-
-  
-
+    
+    FuncaoTela() 
 
     iPesqCarta := Ascan( aBaralho , {|x| x[1] == cPesqCartUser})
     
-
     //iNaipe := Val(iNaipe)
     If iNaipe = 3
         iPesqCarta := iPesqCarta
@@ -296,19 +318,19 @@ cMsgInform := 'Cartas Trocadas'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 QOut('Posicao')
 Qout(iPesq)
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5)
+
+FuncaoTela()
+
 QOut('Cartas Trocadas')
 QOUT(hb_valtoexp(aMatTemp[1]))
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5) 
 
+FuncaoTela()
 
 cMsgInform := 'Cartas Trocadas Pos. 1 a 7 / 8 a 14 / 15 a 21)'
 MsgLoad(cMsgInform,iQtdeMsgInform)
 QOUT(hb_valtoexp(aMatTemp))
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5) 
+
+FuncaoTela()
 
 iQtde := 11
 iCont := 1
@@ -320,9 +342,8 @@ While iCont <= iQtde
     QOUT(hb_valtoexp(aEmbar[iCont]))
     iCont++
 EndDo
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5) 
 
+FuncaoTela()
 
 iQtde := 52
 iCont := 1
@@ -334,8 +355,8 @@ While iCont <= iQtde
     QOUT(hb_valtoexp(aBaralho[iCont]))
     iCont++
 EndDo
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5) 
+
+FuncaoTela()
 
 iQtde := 52
 iCont := 1
@@ -347,7 +368,9 @@ While iCont <= iQtde
     QOUT(hb_valtoexp(aEmbar[iCont]))
     iCont++
 EndDo
-Wait('Aperte uma Tecla para Continuar') 
-Inkey(5) 
+
+FuncaoTela()
+
+Enddo
 
 Return Nil 
