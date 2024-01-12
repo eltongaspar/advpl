@@ -8,6 +8,7 @@ Local rQtdeDepend := 0 // Qtde de dependentes
 Local rValDepend := 0 // Valor por Dependentes 
 Local rValPensaoAliment := 0 // Valor Pensao Alimentacia 
 Local rINSS := 0 // Valor Inss
+Local rINSSSug := 0 // Valor INSS Sugerido 
 Local rIRPFSimp := 0 // Vaor IRPF Simplificado 
 Local rValTotDepend := 0 // Valor Total Dependentes 
 Local rValBaseIR := 0
@@ -18,6 +19,7 @@ Local rValDedIR := 0
 Local rValDedIRSimp := 0
 Local cAlicotIRPF := ''
 Local cAlicotIRPFSimp :=  ''
+Local cAlicotINSS := ''
 Local rValLiqComp := 0
 Local rValLiqSimp := 0
 Local cTipoIRPF := ''
@@ -56,6 +58,7 @@ If rValBaseIR <= 2112.00
 	rValProgIR = 0
 	rValDedIR = 0
 	cAlicotIRPF = '0%'
+		 
 Endif 
 
 // Faixa 02
@@ -123,6 +126,40 @@ If rValBaseIRSimp > 4664.68
 	cAlicotIRPFSimp = '27,5%'
 Endif
 
+
+// Analisar Faixa de INSS
+// Faixa 01
+If rSalBruto <= 1320.00
+	rINSSSug := rSalBruto * 0.075
+	cAlicotINSS = '7,5%'
+Endif 
+
+// Faixa 02
+If rSalBruto >= 1320.01 .And. rSalBruto <= 2571.29
+	rINSSSug := rSalBruto * 0.09
+	cAlicotINSS = '9%'
+Endif 
+
+// Faixa 03
+If rValBaseIRSimp >= 2571.30 .And. rValBaseIRSimp <= 3856.94
+	rINSSSug := rSalBruto * 0.09
+	cAlicotINSS = '12%'
+Endif 
+
+// Faixa 04
+If rValBaseIRSimp >= 3856.95 .And. rValBaseIRSimp <= 7507.49
+	rINSSSug := rSalBruto * 0.14
+	cAlicotINSS = '14%'
+Endif 
+
+// Faixa 05
+If rValBaseIRSimp > 7505.50
+	rINSSSug := rSalBruto * 0.14
+	cAlicotINSS = '15% - Teto Máximo'
+Endif
+
+
+
 /*Base de cÃ¡lculo	AlÃ­quota	Parcela a deduzir do IR
 De R$ 2.112,01 atÃ© R$ 2.826,65	7,5%	R$ 158,40
 De R$ 2.826,66 atÃ© R$ 3.751,05	15%	R$ 370,40
@@ -135,7 +172,15 @@ Até 2.112,00				zero				zero
 De 2.112,01 até 2.826,65	7,5					158,40
 De 2.826,66 até 3.751,05	15					370,40
 De 3.751,06 até 4.664,68	22,5				651,73
-Acima de 4.664,68	2		7,5						884,96        */
+Acima de 4.664,68	2		7,5					884,96        */
+
+
+/*Salário de Contribuição (R$)	Alíquota (%)	Parcela a Deduzir
+até R$ 1.320,00	7,5 %	–
+de R$ 1.320,01 até R$ 2.571,29	9,0 %	19,80
+de R$ 2.571,30 até R$ 3.856,94	12,0 %	96,94
+de R$ 3.856,95 até R$ 7.507,49	14,0 %	174,08*/
+
 
 
 // Calculo IR a Recolher
@@ -170,8 +215,10 @@ Qout('Valor IRPF Deduzido Completo:  ' + Str(rValProgIR))
 Qout('Valor IRPF Deduzido Simples:  ' + Str(rValProgIRSimp))
 Qout('Valor IRPF Alicota:  ' + (cAlicotIRPF))
 Qout('Valor IRPF Alicota Simples:  ' + (cAlicotIRPFSimp))
-Qout (('IR Completo a Recolher ') + Str(rIRCompRec))
-Qout (('IR Completo a Recolher ') + Str(rIRSimpRec))
+QOut('Valor INSS Sugerido:  '  + Str(rINSSSug))
+QOut('Alicota INSS:  ' + (cAlicotINSS))
+QOut (('IR Completo a Recolher ') + Str(rIRCompRec))
+QOut (('IR Completo a Recolher ') + Str(rIRSimpRec))
 Qout('Valor Liquido Completo:  ' + Str(rValLiqComp))
 Qout('Valor Liquido Simples:  ' + Str(rValLiqSimp))
 
@@ -183,11 +230,8 @@ If cTipoIRPF = '2'
 	QOut('IRPF Simplificado')
 EndIf
 
+
 Inkey (5)
-
-
-
-
 
 
 
