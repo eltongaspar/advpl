@@ -85,291 +85,291 @@ End
 
 While lInfinit = .T.
 
-// Gerando Baralho Auto - 
-iQtdeGerInform := 13
-iNumMinInform := 101
-iNumMaxInfor := 113
-cMsgInform := 'Criando Baralho Auto'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-aBarGerAuto := GeraBarAuto(iQtdeGerInform,iNumMinInform,iNumMaxInfor) 
+    // Gerando Baralho Auto - 
+    iQtdeGerInform := 13
+    iNumMinInform := 101
+    iNumMaxInfor := 113
+    cMsgInform := 'Criando Baralho Auto'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+    aBarGerAuto := GeraBarAuto(iQtdeGerInform,iNumMinInform,iNumMaxInfor) 
 
 
 
-//Exibe Baralho 
-cMsgInform := 'Carregando Baralhos'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-QOUT(hb_valtoexp(aBaralho))
+    //Exibe Baralho 
+    cMsgInform := 'Carregando Baralhos'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+    QOUT(hb_valtoexp(aBaralho))
 
-FuncaoTela()
+    FuncaoTela()
 
-// Embaralhando Cartas
-iQtdeGerInform := 52
-iNumMinInform := 101
-iNumMaxInfor := 113
+    // Embaralhando Cartas
+    iQtdeGerInform := 52
+    iNumMinInform := 101
+    iNumMaxInfor := 113
 
-cMsgInform := 'Embaralhando Cartas Resultado'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-aCartas := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+    cMsgInform := 'Embaralhando Cartas Resultado'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+    aCartas := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
 
-FuncaoTela()
+    FuncaoTela()
 
-//Embaralhando Naipes
-iQtdeGerInform := 52
-iNumMinInform := 3
-iNumMaxInfor := 6
+    //Embaralhando Naipes
+    iQtdeGerInform := 52
+    iNumMinInform := 3
+    iNumMaxInfor := 6
 
-cMsgInform := 'Embaralhando Naipes'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+    cMsgInform := 'Embaralhando Naipes'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
 
-aNaipes := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+    aNaipes := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
 
-FuncaoTela()
+    FuncaoTela()
 
-//Cartas Embaralhadas (Cartas+Naipes)
-iQtde := iQtdeGerInform
-iCont := 1
-iCont2 := 2
-iCont3 := 3
-iCont4 := 4
+    //Cartas Embaralhadas (Cartas+Naipes)
+    iQtde := iQtdeGerInform
+    iCont := 1
+    iCont2 := 2
+    iCont3 := 3
+    iCont4 := 4
 
-// Validando cCartaDesc,cNaipeDesc
-While iCont <= iQtde
-    iCarta := aCartas[iCont]
-    iNaipe := aNaipes[iCont]
-    
-    iPesqCarta := Ascan( aBaralho , {|x| x[1] == iCarta})
-    iPesqNaipe := Ascan( aBaralho , {|x| x[2] == iNaipe},iPesqCarta)
-    iPesq := iPesqNaipe
-    cCartaDesc := aBaralho[iPesq,iCont3]
-    cNaipeDesc := aBaralho[iPesq,iCont4]
+    // Validando cCartaDesc,cNaipeDesc
+    While iCont <= iQtde
+        iCarta := aCartas[iCont]
+        iNaipe := aNaipes[iCont]
 
-    Aadd(aEmbar, [iCont,iCont2,iCont3,iCont4])
-    aEmbar[Len(aEmbar)] := {iCarta,iNaipe,cCartaDesc,cNaipeDesc}
-    
-    iCont++
-Enddo
+        iPesqCarta := Ascan( aBaralho , {|x| x[1] == iCarta})
+        iPesqNaipe := Ascan( aBaralho , {|x| x[2] == iNaipe},iPesqCarta)
+        iPesq := iPesqNaipe
+        cCartaDesc := aBaralho[iPesq,iCont3]
+        cNaipeDesc := aBaralho[iPesq,iCont4]
 
-cMsgInform := 'Carregando Baralhos Embaralhados'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+        Aadd(aEmbar, [iCont,iCont2,iCont3,iCont4])
+        aEmbar[Len(aEmbar)] := {iCarta,iNaipe,cCartaDesc,cNaipeDesc}
 
-QOUT(hb_valtoexp(aEmbar))
+        iCont++
+    Enddo
 
-FuncaoTela()
+    cMsgInform := 'Carregando Baralhos Embaralhados'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
 
-// Embaralhando 21 Cartas 
-iQtde := 21
-iCont := 1
-iCont2 := 2
-iCont3 := 3
-iCont4 := 4
+    QOUT(hb_valtoexp(aEmbar))
 
-cMsgInform := 'Cartas Embaralhadas (21 Cartas)'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+    FuncaoTela()
 
-While iCont <= iQtde
-    QOUT(hb_valtoexp(aEmbar[iCont]))
-    iCont++
-EndDo
+    // Embaralhando 21 Cartas 
+    iQtde := 21
+    iCont := 1
+    iCont2 := 2
+    iCont3 := 3
+    iCont4 := 4
 
-FuncaoTela()
+    cMsgInform := 'Cartas Embaralhadas (21 Cartas)'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
 
-// Embaralhando 21 Cartas (Matriz 7x3)
-iQtde := 3
-iQtde2 := 7
-iCont := 1
-iCont2 := 3
-iCont3 := 21
-iCont4 := 4
-While iCont <= iQtde
-    iCont2 := 1
-    While iCont2 <= iQtde2
-        Aadd(aMatTemp, [iCont,iCont2])
-        aMatTemp[Len(aMatTemp)] := aEmbar[iCont3]
-        iCont2++
-        iCont3--
+    While iCont <= iQtde
+        QOUT(hb_valtoexp(aEmbar[iCont]))
+        iCont++
     EndDo
-    iCont++
-Enddo
 
-iCont := 1
+    FuncaoTela()
 
-cMsgInform := 'Cartas Embaralhadas (21 Cartas Matriz 7x3)'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+    // Embaralhando 21 Cartas (Matriz 7x3)
+    iQtde := 3
+    iQtde2 := 7
+    iCont := 1
+    iCont2 := 3
+    iCont3 := 21
+    iCont4 := 4
+    While iCont <= iQtde
+        iCont2 := 1
+        While iCont2 <= iQtde2
+            Aadd(aMatTemp, [iCont,iCont2])
+            aMatTemp[Len(aMatTemp)] := aEmbar[iCont3]
+            iCont2++
+            iCont3--
+        EndDo
+        iCont++
+    Enddo
 
-QOUT(hb_valtoexp(aMatTemp))
+    iCont := 1
 
-FuncaoTela()
+    cMsgInform := 'Cartas Embaralhadas (21 Cartas Matriz 7x3)'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
 
-// Informar ou Gerar Carta para Pesquisa
-//Accept("Digite uma Carta para Pesquisa:  ") to cPesqCartUser
-//cPesqCartUser := '7'
-// Gerar Carta Automatica para pesquisa 
-iQtdeGerInform := 1
-iNumMinInform := 101
-iNumMaxInfor := 113
+    QOUT(hb_valtoexp(aMatTemp))
 
-cMsgInform := 'Pesquisa Auto - Carta Aleatoria'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+    FuncaoTela()
 
-aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-cPesqCartUser := aMatTemp2[1]
-
-//Accept("Digite o Naipe para Pesquisa(3-Copas / 4-Ouro / 5-Paus / 6-Espada):  ") to iPesqNaipeUser
-//iPesqNaipeUser := Val(iPesqNaipeUser)
-iQtdeGerInform := 1
-iNumMinInform := 3
-iNumMaxInfor := 6
-
-cMsgInform := 'Pesquisa Auto - Naipe Aleatoria'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-
-FuncaoTela()
-
-aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-iPesqNaipeUser := aMatTemp2[1]
-
-FuncaoTela()
-
-iPesqCarta := iPesqCarta := Ascan(aEmbar, {|x| x[1] == cPesqCartUser})
-//iPesqNaipe := Ascan( aBaralho , {|x| x[2] == iPesqNaipeUser},iPesqCarta)
-iPesq := iPesqCarta
-QOut("Posicao Matriz")
-QOut(iPesq)
-
-FuncaoTela()
-
-QOut("Cartas")
-QOUT(hb_valtoexp(aEmbar[iPesq]))
-
-FuncaoTela()
-
-iCont := 1
-iCont2 := 2
-iCont3 := 3
-iCont4 := 4
-iQtde := 1
-
-While iCont <= iQtde
-
-    //Accept("Informe a Carta a Ser Trocada:  ") to cPesqCartUser
+    // Informar ou Gerar Carta para Pesquisa
+    //Accept("Digite uma Carta para Pesquisa:  ") to cPesqCartUser
     //cPesqCartUser := '7'
+    // Gerar Carta Automatica para pesquisa 
     iQtdeGerInform := 1
     iNumMinInform := 101
     iNumMaxInfor := 113
 
-    cMsgInform := 'Troca Auto - Carta Aleatoria'
+    cMsgInform := 'Pesquisa Auto - Carta Aleatoria'
     MsgLoad(cMsgInform,iQtdeMsgInform)
-    
+
     aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
     cPesqCartUser := aMatTemp2[1]
-    QOut(cPesqCartUser)
-    
-    FuncaoTela()
 
-    //Accept("Informe o Naipe a Ser Trocada 3-Copas / 4-Ouro / 5-Paus / 6-Espada:  ") to iNaipe
-    //iNaipe := 3   
+    //Accept("Digite o Naipe para Pesquisa(3-Copas / 4-Ouro / 5-Paus / 6-Espada):  ") to iPesqNaipeUser
+    //iPesqNaipeUser := Val(iPesqNaipeUser)
     iQtdeGerInform := 1
     iNumMinInform := 3
     iNumMaxInfor := 6
 
-    cMsgInform := 'Troca Auto - Naipe Aleatoria'
+    cMsgInform := 'Pesquisa Auto - Naipe Aleatoria'
     MsgLoad(cMsgInform,iQtdeMsgInform)
 
+    FuncaoTela()
+
     aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
-    iNaipe := aMatTemp2[1]
-    QOut(iNaipe)
-    
-    FuncaoTela() 
+    iPesqNaipeUser := aMatTemp2[1]
 
-    iPesqCarta := Ascan( aBaralho , {|x| x[1] == cPesqCartUser})
-    
-    //iNaipe := Val(iNaipe)
-    If iNaipe = 3
-        iPesqCarta := iPesqCarta
-    EndIf
+    FuncaoTela()
 
-    If iNaipe = 4
-        iPesqCarta := iPesqCarta + 1
-    EndIf
-
-    If iNaipe = 5
-        iPesqCarta := iPesqCarta + 2
-    EndIf
-
-     If iNaipe = 6
-        iPesqCarta := iPesqCarta + 3
-    EndIf
-   
-    
+    iPesqCarta := iPesqCarta := Ascan(aEmbar, {|x| x[1] == cPesqCartUser})
+    //iPesqNaipe := Ascan( aBaralho , {|x| x[2] == iPesqNaipeUser},iPesqCarta)
     iPesq := iPesqCarta
-    iCarta := aBaralho[iPesq,1]
-    iNaipe := aBaralho[iPesq,iCont2]
-    cCartaDesc := aBaralho[iPesq,iCont3]
-    cNaipeDesc := aBaralho[iPesq,iCont4]
+    QOut("Posicao Matriz")
+    QOut(iPesq)
 
-   
-    AAdd(aMatTemp, [iCont,iCont2,iCont3,iCont4])
-    aMatTemp[Len(aMatTemp)] := {iCarta,iNaipe,cCartaDesc,cNaipeDesc}
-    iCont++
+    FuncaoTela()
 
-Enddo
+    QOut("Cartas")
+    QOUT(hb_valtoexp(aEmbar[iPesq]))
 
-cMsgInform := 'Cartas Trocadas'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-QOut('Posicao')
-Qout(iPesq)
+    FuncaoTela()
 
-FuncaoTela()
+    iCont := 1
+    iCont2 := 2
+    iCont3 := 3
+    iCont4 := 4
+    iQtde := 1
 
-QOut('Cartas Trocadas')
-QOUT(hb_valtoexp(aMatTemp[1]))
+    While iCont <= iQtde
 
-FuncaoTela()
+        //Accept("Informe a Carta a Ser Trocada:  ") to cPesqCartUser
+        //cPesqCartUser := '7'
+        iQtdeGerInform := 1
+        iNumMinInform := 101
+        iNumMaxInfor := 113
 
-cMsgInform := 'Cartas Trocadas Pos. 1 a 7 / 8 a 14 / 15 a 21)'
-MsgLoad(cMsgInform,iQtdeMsgInform)
-QOUT(hb_valtoexp(aMatTemp))
+        cMsgInform := 'Troca Auto - Carta Aleatoria'
+        MsgLoad(cMsgInform,iQtdeMsgInform)
 
-FuncaoTela()
+        aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+        cPesqCartUser := aMatTemp2[1]
+        QOut(cPesqCartUser)
 
-iQtde := 11
-iCont := 1
+        FuncaoTela()
 
-cMsgInform := 'Cartas Embaralhadas (21 Cartas)'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+        //Accept("Informe o Naipe a Ser Trocada 3-Copas / 4-Ouro / 5-Paus / 6-Espada:  ") to iNaipe
+        //iNaipe := 3   
+        iQtdeGerInform := 1
+        iNumMinInform := 3
+        iNumMaxInfor := 6
 
-While iCont <= iQtde
-    QOUT(hb_valtoexp(aEmbar[iCont]))
-    iCont++
-EndDo
+        cMsgInform := 'Troca Auto - Naipe Aleatoria'
+        MsgLoad(cMsgInform,iQtdeMsgInform)
 
-FuncaoTela()
+        aMatTemp2 := GeraNumAleatMinMax(iQtdeGerInform,iNumMinInform,iNumMaxInfor)
+        iNaipe := aMatTemp2[1]
+        QOut(iNaipe)
 
-iQtde := 52
-iCont := 1
+        FuncaoTela() 
 
-cMsgInform := 'Cartas do Baralho'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+        iPesqCarta := Ascan( aBaralho , {|x| x[1] == cPesqCartUser})
 
-While iCont <= iQtde
-    QOUT(hb_valtoexp(aBaralho[iCont]))
-    iCont++
-EndDo
+        //iNaipe := Val(iNaipe)
+        If iNaipe = 3
+            iPesqCarta := iPesqCarta
+        EndIf
 
-FuncaoTela()
+        If iNaipe = 4
+            iPesqCarta := iPesqCarta + 1
+        EndIf
 
-iQtde := 52
-iCont := 1
+        If iNaipe = 5
+            iPesqCarta := iPesqCarta + 2
+        EndIf
 
-cMsgInform := 'Cartas Embaralhadas'
-MsgLoad(cMsgInform,iQtdeMsgInform)
+         If iNaipe = 6
+            iPesqCarta := iPesqCarta + 3
+        EndIf
+    
 
-While iCont <= iQtde
-    QOUT(hb_valtoexp(aEmbar[iCont]))
-    iCont++
-EndDo
+        iPesq := iPesqCarta
+        iCarta := aBaralho[iPesq,1]
+        iNaipe := aBaralho[iPesq,iCont2]
+        cCartaDesc := aBaralho[iPesq,iCont3]
+        cNaipeDesc := aBaralho[iPesq,iCont4]
 
-FuncaoTela()
+    
+        AAdd(aMatTemp, [iCont,iCont2,iCont3,iCont4])
+        aMatTemp[Len(aMatTemp)] := {iCarta,iNaipe,cCartaDesc,cNaipeDesc}
+        iCont++
+
+    Enddo
+
+    cMsgInform := 'Cartas Trocadas'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+    QOut('Posicao')
+    Qout(iPesq)
+
+    FuncaoTela()
+
+    QOut('Cartas Trocadas')
+    QOUT(hb_valtoexp(aMatTemp[1]))
+
+    FuncaoTela()
+
+    cMsgInform := 'Cartas Trocadas Pos. 1 a 7 / 8 a 14 / 15 a 21)'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+    QOUT(hb_valtoexp(aMatTemp))
+
+    FuncaoTela()
+
+    iQtde := 11
+    iCont := 1
+
+    cMsgInform := 'Cartas Embaralhadas (21 Cartas)'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+
+    While iCont <= iQtde
+        QOUT(hb_valtoexp(aEmbar[iCont]))
+        iCont++
+    EndDo
+
+    FuncaoTela()
+
+    iQtde := 52
+    iCont := 1
+
+    cMsgInform := 'Cartas do Baralho'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+
+    While iCont <= iQtde
+        QOUT(hb_valtoexp(aBaralho[iCont]))
+        iCont++
+    EndDo
+
+    FuncaoTela()
+
+    iQtde := 52
+    iCont := 1
+
+    cMsgInform := 'Cartas Embaralhadas'
+    MsgLoad(cMsgInform,iQtdeMsgInform)
+
+    While iCont <= iQtde
+        QOUT(hb_valtoexp(aEmbar[iCont]))
+        iCont++
+    EndDo
+
+    FuncaoTela()
 
 Enddo
 
