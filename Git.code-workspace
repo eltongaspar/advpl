@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../python"
+		},
+		{
+			"path": "../SQL"
+		}
+	],
+	"settings": {}
+}
