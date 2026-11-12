@@ -38,5 +38,7 @@ While iInkeytValid <> 1 .And. iInkeytValid <> 2
     End 
 Enddo
 
-Return (lWait,lInkey,iTempInkey)
+// Retorna array: {lWait, lInkey, iTempInkey}
+// (Return (a,b,c) devolvia apenas o ultimo valor)
+Return {lWait, lInkey, iTempInkey}
 
